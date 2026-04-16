@@ -1,0 +1,22 @@
+name: New Account Live
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install FFmpeg
+        run: sudo apt update && sudo apt install ffmpeg -y
+
+      - name: Download Video
+        run: |
+          wget -O myvideo.mp4 "https://github.com/akhil0888234-web/My-live-stream-/releases/download/V1/Screenrecording_20260304_151027_com.aim.racing.mp4"
+
+      - name: Start Streaming
+        run: |
+          ffmpeg -re -stream_loop -1 -i myvideo.mp4 -c:v libx264 -preset veryfast -b:v 2500k -maxrate 2500k -bufsize 5000k -pix_fmt yuv420p -g 60 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/${{ secrets.YOUTUBE_KEY }}
