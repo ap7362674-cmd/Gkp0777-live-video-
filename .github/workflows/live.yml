@@ -15,7 +15,7 @@ jobs:
 
       - name: Download Video
         run: |
-          wget -O myvideo.mp4 "https://github.com/akhil0888234-web/My-live-stream-/releases/download/V1/Screenrecording_20260304_151027_com.aim.racing.mp4"
+          wget -O myvideo.mp4 "https://github.com/ap7362674-cmd/Gkp0777-live-video-/releases/download/V1/Screenrecording_20260304_151027_com.aim.racing.mp4"
 
       - name: Start Streaming
         run: |
